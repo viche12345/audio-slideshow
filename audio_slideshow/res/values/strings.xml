@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, FileBrowser!</string>
+    <string name="app_name">Audio Slideshow</string>
+    <string name="images_location_default">/mnt/sdcard/</string>
+    <string name="pref_images_location_title">Location of Images</string>
+    <string name="pref_images_location_summ">Full pathname to images</string>
+    <string name="menu_settings">Settings</string>
+
+</resources>
