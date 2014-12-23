@@ -82,11 +82,11 @@ public class FileBrowser extends Activity {
 	private class Adapter extends BaseAdapter {
 
 		public int getCount() {
-			return listOfFiles.length;
+     return listOfFiles == null ? 0 : listOfFiles.length;
 		}
 
 		public Object getItem(int arg0) {
-			return listOfFiles[arg0];
+        return listOfFiles == null ? null : listOfFiles[arg0];
 		}
 
 		public long getItemId(int arg0) {
