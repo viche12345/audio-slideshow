@@ -82,11 +82,11 @@ public class FileBrowser extends Activity {
 	private class Adapter extends BaseAdapter {
 
 		public int getCount() {
-     return listOfFiles == null ? 0 : listOfFiles.length;
+			return listOfFiles == null ? 0 : listOfFiles.length;
 		}
 
 		public Object getItem(int arg0) {
-        return listOfFiles == null ? null : listOfFiles[arg0];
+			return listOfFiles == null ? null : listOfFiles[arg0];
 		}
 
 		public long getItemId(int arg0) {
@@ -121,7 +121,7 @@ public class FileBrowser extends Activity {
 		return super.onContextItemSelected(item);
 	}
 
-	public String[] fileArrayToStringArray(File[] files) {
+	public static String[] fileArrayToStringArray(File[] files) {
 		String[] fileNames = new String[files.length];
 		for (int i = 0; i < files.length; i++) {
 			fileNames[i] = files[i].getAbsolutePath();

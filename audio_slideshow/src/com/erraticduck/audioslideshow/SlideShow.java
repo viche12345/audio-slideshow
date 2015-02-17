@@ -1,9 +1,9 @@
 package com.erraticduck.audioslideshow;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -37,7 +37,7 @@ public class SlideShow extends Activity implements ViewFactory {
 	public static final int FORWARD = 1;
 
 	private File listOfPics[];
-	private static File audioList[] = null;
+	private ArrayList<CharSequence> audioList;
 	private String pathString;
 
 	private static int index;
@@ -105,22 +105,16 @@ public class SlideShow extends Activity implements ViewFactory {
 	public void startAudio() {
 		final Random gen = new Random();
 
-		if (getIntent().hasExtra("audio_path")) {
-			audioList = new File(getIntent().getStringExtra("audio_path"))
-					.listFiles(new FileFilter() {
-
-						public boolean accept(File pathname) {
-							return !pathname.isDirectory();
-						}
-					});
+		if (getIntent().hasExtra("audio_files")) {
+			audioList = getIntent().getCharSequenceArrayListExtra("audio_files");
 		}
-		Log.i("SlideShow", "Selected audio folder: " + audioList);
-		if (audioList != null && audioList.length > 0) {
-			playFile(audioList[gen.nextInt(audioList.length)].getAbsolutePath());
+
+		if (audioList != null && audioList.size() > 0) {
+			playFile(audioList.get(gen.nextInt(audioList.size())) + "");
 			mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
 				public void onCompletion(MediaPlayer mp) {
-					playFile(audioList[gen.nextInt(audioList.length)].getAbsolutePath());
+					playFile(audioList.get(gen.nextInt(audioList.size())) + "");
 				}
 			});
 		}
